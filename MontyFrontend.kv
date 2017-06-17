@@ -1,0 +1,100 @@
+<MainMenu>:
+    Video:
+        source:'ezgif.com-crop.mp4'
+        play: True
+        options: {'eos': 'loop'}
+    GridLayout:
+        cols: 1
+        size: self.size
+        FloatLayout:
+            Label:
+                size: self.size
+                text: "MONTY'S DOORS"
+                font_size: '75sp'
+                font_name: 'Aller'
+                pos: (0,150)
+                color: (0.7, 0.7, 0.7, .75)
+        BoxLayout:
+            BubbleButton:
+                text: 'SETTINGS'
+                size_hint: .10, .10
+                background_color: (1.0, 1.0, 1.0, 3.0)
+            BubbleButton:
+                text: 'PLAY'
+                size_hint: .10, .10
+                background_color: (1.0, 1.0, 1.0, 3.0)
+                on_release: root.manager.current = 'GameScreen'
+                on_release: root.door_assignment()
+            BubbleButton:
+                text: 'INSTRUCTIONS'
+                size_hint: .10, .10
+                background_color: (1.0, 1.0, 1.0, 3.0)
+        Label:
+            text: 'BRIANNA BROWN RICHARDSON ©'
+            size_hint: .10, .05
+
+<GameScreen>:
+    GridLayout:
+        cols: 1
+        size: self.size
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: 'brick-wall.jpg'
+        BoxLayout:
+            size_hint: 1, .15
+            canvas:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'gray-top.jpg'
+            Button:
+                size_hint: .25, 1
+                background_color: 0, 0, 0, 0
+                on_release: root.exit_game()
+                Image:
+                    source: 'back-arrow.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+            Label:
+                text: 'CHOOSE A DOOR'
+            Label:
+                id: score
+                text: 'SCORE: 0'
+
+        BoxLayout:
+            GridLayout:
+                cols: 1
+                Image:
+                    id: door1
+                    source: 'door_closed.jpg'
+                Button:
+                    id: button1
+                    size_hint: .33, .1
+                    text: '1'
+                    on_release: root.make_selection(1)
+            GridLayout:
+                cols: 1
+                Image:
+                    id: door2
+                    source: 'door_closed.jpg'
+                Button:
+                    id: button2
+                    size_hint: .33, .1
+                    text: '2'
+                    on_release: root.make_selection(2)
+            GridLayout:
+                cols: 1
+                Image:
+                    id: door3
+                    source: 'door_closed.jpg'
+                Button:
+                    id: button3
+                    size_hint: .33, .1
+                    text: '3'
+                    on_release: root.make_selection(3)
+        Label:
+            text: 'BRIANNA BROWN RICHARDSON ©'
+            size_hint: .10, .05
+            color: (0.0, 0.0, 0.0, 1.0)
